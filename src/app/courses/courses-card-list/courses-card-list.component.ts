@@ -36,7 +36,6 @@ export class CoursesCardListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
 
-
     dialogRef.afterClosed()
       .pipe(
         filter(val => !!val),

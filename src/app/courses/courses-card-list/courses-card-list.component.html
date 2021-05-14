@@ -1,6 +1,6 @@
 
 
-<mat-card *ngFor="let course of courses" class="course-card mat-elevation-z10">
+<mat-card *ngFor="let course of courses" class="course-card mat-elevation-z4">
 
     <mat-card-header>
 
@@ -20,8 +20,7 @@
             VIEW COURSE
         </button>
 
-        <button mat-button class="mat-raised-button mat-accent"
-                (click)="editCourse(course)">
+        <button mat-button class="mat-raised-button mat-accent" (click)="editCourse(course)">
             EDIT
         </button>
 
