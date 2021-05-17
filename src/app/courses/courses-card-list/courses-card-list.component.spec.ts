@@ -46,7 +46,7 @@ describe('CourseCardListComponent', () => {
     const cards = el.queryAll(By.css(".course-card"));
 
     expect(cards).toBeTruthy("Could not find cards");
-    expect(cards.length).toBe(14, "Unexpected number of course")
+    expect(cards.length).toBe(12, "Unexpected number of course")
   });
 
   it('should display the first name', () => {
