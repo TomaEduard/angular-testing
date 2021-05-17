@@ -18,3 +18,4 @@ install:
   - npm ci
 script:
   - npm run e2e
+  - npm run build
