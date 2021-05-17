@@ -1,7 +1,7 @@
-
-language: node_js
+# Configuration file
+language: node_js # Target runtime
 node_js:
-  - 12
+  - 14
 addons:
   apt:
     packages:
