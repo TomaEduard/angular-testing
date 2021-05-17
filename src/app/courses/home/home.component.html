@@ -1,4 +1,3 @@
-
 <div class="container">
 
     <h3>All Courses</h3>
@@ -20,7 +19,7 @@
       </ng-container>
 
 
-      <ng-container  *ngIf="(advancedCourses$ | async) as advancedCourses">
+      <ng-container *ngIf="(advancedCourses$ | async) as advancedCourses">
 
         <mat-tab label="Advanced" *ngIf="advancedCourses?.length > 0">
 
