@@ -19,7 +19,7 @@ describe('Home Page', () => {
     it('should display a list of courses', () => {
         
         // the page contains this string
-        cy.contains("All Courses Error");
+        cy.contains("All Courses");
     
         // wait util have response from mock API
         cy.wait('@courses');
