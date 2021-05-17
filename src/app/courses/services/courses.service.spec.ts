@@ -20,6 +20,7 @@ describe('CourseService', () => {
       ]
     });
 
+    // mock
     coursesService = TestBed.get(CoursesService),
     httpTestingController = TestBed.get(HttpTestingController);
 
@@ -60,14 +61,11 @@ describe('CourseService', () => {
 
   it('should save the course data', () => {
 
-    const changes: Partial<Course> =
-        {titles:{description: 'Testing Course'}};
+    const changes: Partial<Course> = {titles:{description: 'Testing Course'}};
 
     coursesService.saveCourse(12, changes)
       .subscribe(course => {
-
-          expect(course.id).toBe(12);
-
+        expect(course.id).toBe(12);
       });
 
     const req = httpTestingController.expectOne('/api/courses/12');
@@ -77,17 +75,17 @@ describe('CourseService', () => {
     expect(req.request.body.titles.description)
       .toEqual(changes.titles.description);
 
+    
+
     req.flush({
       ...COURSES[12],
       ...changes
     })
-
   });
 
   it('should give an error if save course fails', () => {
 
-    const changes: Partial<Course> =
-    {titles:{description: 'Testing Course'}};
+    const changes: Partial<Course> = {titles:{description: 'Testing Course'}};
 
     coursesService.saveCourse(12, changes)
       .subscribe(

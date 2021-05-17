@@ -25,7 +25,7 @@ describe('CalculatorService', () => {
         console.log('add Test', )
 
         const result = calculator.add(2, 2);
-
+        
         expect(result).toBe(4);
         expect(loggerSpy.log).toHaveBeenCalledTimes(1)
 

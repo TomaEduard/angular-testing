@@ -1,6 +1,6 @@
 import { CoursesCardListComponent } from './courses-card-list.component';
 import { CoursesModule } from './../courses.module';
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { setupCourses } from '../common/setup-test-data';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ describe('CourseCardListComponent', () => {
   let el: DebugElement;
 
   // async wait for any async operation trigger
-  beforeEach(async (() => {
+  beforeEach(waitForAsync (() => {
 
     TestBed.configureTestingModule({
       // declarations: []

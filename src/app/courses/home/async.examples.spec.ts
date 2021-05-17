@@ -5,7 +5,7 @@ import { of } from "rxjs";
 describe('Async Testing Example', () => {
 
   // with done and done()
-  it('Asynchronous test example with Jasmine done()',(done: DoneFn)=> {
+  it('Asynchronous test example with Jasmine done()', (done: DoneFn)=> {
     
     let test = false;
 
@@ -134,4 +134,6 @@ describe('Async Testing Example', () => {
 
   }));
 
+  
 });
+

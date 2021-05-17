@@ -10,10 +10,10 @@
 
         <mat-tab label="Beginners" *ngIf="beginnerCourses?.length > 0">
 
-          <courses-card-list (courseEdited)="reloadCourses()"
-                             [courses]="beginnerCourses">
-
-          </courses-card-list>
+          <courses-card-list 
+            (courseEdited)="reloadCourses()"
+            [courses]="beginnerCourses"
+          ></courses-card-list>
 
         </mat-tab>
 
@@ -24,11 +24,10 @@
 
         <mat-tab label="Advanced" *ngIf="advancedCourses?.length > 0">
 
-          <courses-card-list (courseEdited)="reloadCourses()"
-                             [courses]="advancedCourses">
-
-
-          </courses-card-list>
+          <courses-card-list 
+            (courseEdited)="reloadCourses()"
+            [courses]="advancedCourses"
+          ></courses-card-list>
 
         </mat-tab>
 
