@@ -13,6 +13,7 @@ import { of } from 'rxjs';
 import { click } from '../common/test-utils';
 describe('HomeComponent', () => {
 
+  var originalTimeout: number;
   let fixture: ComponentFixture<HomeComponent>;
   let component: HomeComponent;
   let el: DebugElement;
@@ -26,6 +27,9 @@ describe('HomeComponent', () => {
   beforeEach(waitForAsync (() => {
     
     const coursesServiceSpy = jasmine.createSpyObj('CoursesService', ['findAllCourses']);
+
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL; // setTimeout 
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000; // setTimeout 
 
     TestBed.configureTestingModule({
       imports: [
@@ -45,6 +49,11 @@ describe('HomeComponent', () => {
       })
 
   }));
+
+  // setTimeout 
+  afterEach(function() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+  });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
@@ -112,27 +121,28 @@ describe('HomeComponent', () => {
 
   // alternative of fakeAsync, in waitForAsync not have acces to flush()
   // no have control of time(tick), microtasking/maintask
-  // use waitForAsync for integration test with httl call
-  it('should display advanced courses when tab clicked - waitForAsync', waitForAsync(() => {
-    
+  // use waitForAsync for integration test with http call
+  it("should display advanced courses when tab clicked - async", waitForAsync(() => {
+
     coursesService.findAllCourses.and.returnValue(of(setupCourses()));
 
     fixture.detectChanges();
 
     const tabs = el.queryAll(By.css(".mat-tab-label"));
 
-    // el.nativeElement.click(tabs[1]);
     click(tabs[1]);
 
     fixture.detectChanges();
 
     fixture.whenStable().then(() => {
 
-      console.log('called whenStable', )
-      const cardTitles = el.queryAll(By.css(".mat-tab-body-active"));
-    
-      expect(cardTitles.length).toBeGreaterThan(0, "Could not find card titles");
-      expect(cardTitles[0].nativeElement.textContent).toContain("Angular Security Course");
+        console.log("called whenStable() ");
+
+        const cardTitles = el.queryAll(By.css('.mat-tab-body-active .mat-card-title'));
+
+        expect(cardTitles.length).toBeGreaterThan(0,"Could not find card titles");
+
+        expect(cardTitles[0].nativeElement.textContent).toContain("Angular Security Course");
 
     });
 
