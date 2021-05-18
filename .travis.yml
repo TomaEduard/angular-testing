@@ -17,5 +17,4 @@ cache:
 install:
   - npm ci
 script:
-  - npm run test --no-watch
   - npm run e2e

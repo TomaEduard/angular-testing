@@ -11,6 +11,7 @@ import { setupCourses } from '../common/setup-test-data';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { click } from '../common/test-utils';
+
 describe('HomeComponent', () => {
 
   var originalTimeout: number;
@@ -28,8 +29,9 @@ describe('HomeComponent', () => {
     
     const coursesServiceSpy = jasmine.createSpyObj('CoursesService', ['findAllCourses']);
 
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL; // setTimeout 
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000; // setTimeout 
+    // setTimeout waitForAsync
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
 
     TestBed.configureTestingModule({
       imports: [
@@ -50,7 +52,7 @@ describe('HomeComponent', () => {
 
   }));
 
-  // setTimeout 
+  // setTimeout waitForAsync
   afterEach(function() {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
